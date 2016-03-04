@@ -1,0 +1,1 @@
+The folder to hald training and education samples.
