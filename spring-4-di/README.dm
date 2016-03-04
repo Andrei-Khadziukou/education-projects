@@ -1,0 +1,1 @@
+The samples is based on the the Spring Framework 4 And Dependency Injection For Beginners tutorial from the Udemy site.
