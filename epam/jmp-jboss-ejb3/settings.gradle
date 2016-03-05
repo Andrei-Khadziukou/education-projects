@@ -1,2 +1,6 @@
 rootProject.name = 'jmp-jboss-ejb3'
 
+include 'jmp-jboss-ejb3-api'
+include 'jmp-jboss-ejb3-impl'
+include 'jmp-jboss-ejb3-client'
+
