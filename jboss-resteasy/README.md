@@ -1,0 +1,1 @@
+The sample of the using JBoss RESTEasy.
