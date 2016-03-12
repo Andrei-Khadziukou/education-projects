@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
  * @author Andrei Khadziukou
  */
 @Component
-public class GoodMorningService {
+public class GoodMorningService implements HiService {
 
+    @Override
     public String sayHi() {
         return "Good Morning!";
     }

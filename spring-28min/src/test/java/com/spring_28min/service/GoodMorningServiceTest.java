@@ -19,8 +19,9 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = ApplicationContextConfiguration.class) // defines where is a configuration
 public class GoodMorningServiceTest {
 
+    // the Spring tries to find suitable bean with the same class or which implements specified interface
     @Autowired
-    private GoodMorningService goodMorningService;
+    private HiService goodMorningService;
 
     @Test
     public void testSayHi() throws Exception {

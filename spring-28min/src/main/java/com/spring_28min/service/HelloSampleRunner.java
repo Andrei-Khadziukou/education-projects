@@ -14,8 +14,9 @@ import org.springframework.stereotype.Component;
 @Component // note that spring must create it and initialize
 public class HelloSampleRunner {
 
+    // the Spring tries to find suitable bean with the same class or which implements specified interface
     @Autowired // inject dependency
-    private GoodMorningService goodMorningService;
+    private HiService goodMorningService;
 
     public static void main(String[] args) {
         // creating spring (spring context) for usage and specify configuration
