@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Andrei Khadziukou
  */
 @Configuration // from http://projects.spring.io/spring-framework/
+// where to look for beans
 @ComponentScan("com.spring_28min.service") // from http://projects.spring.io/spring-framework/
 public class ApplicationContextConfiguration {
 }

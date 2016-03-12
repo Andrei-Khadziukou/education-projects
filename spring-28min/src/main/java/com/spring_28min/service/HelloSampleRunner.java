@@ -18,6 +18,7 @@ public class HelloSampleRunner {
     private GoodMorningService goodMorningService;
 
     public static void main(String[] args) {
+        // creating spring (spring context) for usage and specify configuration
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConfiguration.class);
         HelloSampleRunner runner = context.getBean(HelloSampleRunner.class);
         runner.say();

@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  * Date: 12.03.2016.
  * @author Andrei Khadziukou
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationContextConfiguration.class)
+@RunWith(SpringJUnit4ClassRunner.class) // responsible for crating spring context
+@ContextConfiguration(classes = ApplicationContextConfiguration.class) // defines where is a configuration
 public class GoodMorningServiceTest {
 
     @Autowired
