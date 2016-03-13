@@ -1,1 +1,1 @@
-The folder to hald training and education samples.
+The folder to hold training projects and education samples.
