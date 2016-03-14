@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     compile 'org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.0.Final'
+    // we need it to have ability to use @Form (see edu.sample.jboss.resteasy.login.LoginService)
+    providedCompile 'org.jboss.resteasy:resteasy-jaxrs:3.0.16.Final'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

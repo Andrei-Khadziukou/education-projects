@@ -18,7 +18,7 @@ public class HelloWorld {
     @GET
     @Path("/helloworld")
     public String helloWorld() {
-        // localhost:8080/jboss-resteasy-1.0-SNAPSHOT/tutorial/helloworld
+        // localhost:8080/jboss-resteasy-1.0-SNAPSHOT/rest/tutorial/helloworld
         return "Hello World!!!";
     }
 
