@@ -1,0 +1,1 @@
+Initiate the folder for the android education project based on the "Android. Быстрый старт" training (https://geekbrains.ru/records/1059).
