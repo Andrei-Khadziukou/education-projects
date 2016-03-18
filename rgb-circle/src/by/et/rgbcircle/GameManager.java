@@ -11,10 +11,17 @@ import android.graphics.Paint;
  */
 public class GameManager {
 
+    private static int sScreenWidth;
+    private static int sScreenHeight;
+
+    private CanvasView canvasView;
     private MainCircle mainCircle;
     private Paint paint;
 
-    public GameManager() {
+    public GameManager(CanvasView canvasView, int width, int height) {
+        this.canvasView = canvasView;
+        sScreenHeight = height;
+        sScreenWidth = width;
         initializeMainCircle();
         initializePaint();
     }
@@ -26,7 +33,7 @@ public class GameManager {
     }
 
     private void initializeMainCircle() {
-        mainCircle = new MainCircle(50, 100);
+        mainCircle = new MainCircle(sScreenWidth / 2, sScreenHeight / 2);
     }
 
     public void onDraw(Canvas canvas) {
