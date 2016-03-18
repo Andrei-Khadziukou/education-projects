@@ -1,5 +1,7 @@
 package by.et.rgbcircle;
 
+import java.util.ArrayList;
+
 /**
  * The game manage to hold process of the game.
  * Date: 03/18/2016
@@ -13,12 +15,21 @@ public class GameManager {
 
     private ICanvasView canvasView;
     private MainCircle mainCircle;
+    private ArrayList<EnemyCircle> enemyCircles;
 
     public GameManager(ICanvasView canvasView, int width, int height) {
         this.canvasView = canvasView;
         sScreenHeight = height;
         sScreenWidth = width;
         initializeMainCircle();
+        initializeEnemyCircles();
+    }
+
+    private void initializeEnemyCircles() {
+        enemyCircles = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            enemyCircles.add(EnemyCircle.getRandomCircle());
+        }
     }
 
     private void initializeMainCircle() {
@@ -27,6 +38,9 @@ public class GameManager {
 
     public void onDraw() {
         canvasView.drawCircle(mainCircle);
+        for (EnemyCircle enemyCircle : enemyCircles) {
+            canvasView.drawCircle(enemyCircle);
+        }
     }
 
     public void onTouchEvent(int x, int y) {
