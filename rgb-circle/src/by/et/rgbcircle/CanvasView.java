@@ -2,7 +2,6 @@ package by.et.rgbcircle;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -14,28 +13,18 @@ import android.view.View;
  */
 public class CanvasView extends View {
 
-    private MainCircle mainCircle;
-    private Paint paint;
+    private GameManager gameManager;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeMainCircle();
-        initializePaint();
+        gameManager = new GameManager();
     }
 
-    private void initializePaint() {
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.FILL);
-    }
 
-    private void initializeMainCircle() {
-        mainCircle = new MainCircle(20, 50);
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(mainCircle.getX(), mainCircle.getY(), mainCircle.getRadius(), paint);
+        gameManager.onDraw(canvas);
     }
 }

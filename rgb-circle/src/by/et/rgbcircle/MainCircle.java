@@ -8,7 +8,7 @@ package by.et.rgbcircle;
  */
 public class MainCircle {
 
-    public static final int INITIAL_RADIUS = 5;
+    public static final int INITIAL_RADIUS = 10;
     private int x;
     private int y;
     private int radius;
