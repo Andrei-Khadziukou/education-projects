@@ -8,5 +8,5 @@ package by.et.rgbcircle;
  */
 public interface ICanvasView {
 
-    void drawCircle(MainCircle mainCircle);
+    void drawCircle(SimpleCircle mainCircle);
 }
