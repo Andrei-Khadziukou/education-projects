@@ -2,6 +2,7 @@ package by.et.rgbcircle;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.Display;
@@ -14,17 +15,20 @@ import android.view.WindowManager;
  *
  * @author Andrei_Khadziukou
  */
-public class CanvasView extends View {
+public class CanvasView extends View implements ICanvasView {
 
     private static int sScreenWidth;
     private static int sScreenHeight;
 
     private GameManager gameManager;
+    private Paint paint;
+    private Canvas canvas;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initializeScreenWidthAndHeight(context);
         gameManager = new GameManager(this, sScreenWidth, sScreenHeight);
+        initializePaint();
     }
 
     private void initializeScreenWidthAndHeight(Context context) {
@@ -37,10 +41,21 @@ public class CanvasView extends View {
         sScreenHeight = point.y;
     }
 
+    private void initializePaint() {
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.FILL);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        gameManager.onDraw(canvas);
+        this.canvas = canvas;
+        gameManager.onDraw();
+    }
+
+    @Override
+    public void drawCircle(MainCircle mainCircle) {
+        canvas.drawCircle(mainCircle.getX(), mainCircle.getY(), mainCircle.getRadius(), paint);
     }
 }
