@@ -28,4 +28,16 @@ public class GameManager {
     public void onDraw() {
         canvasView.drawCircle(mainCircle);
     }
+
+    public void onTouchEvent(int x, int y) {
+        mainCircle.moveTo(x, y);
+    }
+
+    public static int getScreenWidth() {
+        return sScreenWidth;
+    }
+
+    public static int getScreenHeight() {
+        return sScreenHeight;
+    }
 }

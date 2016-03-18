@@ -9,6 +9,7 @@ package by.et.rgbcircle;
 public class MainCircle {
 
     public static final int INITIAL_RADIUS = 10;
+    public static final int SPEED = 30;
     private int x;
     private int y;
     private int radius;
@@ -29,5 +30,12 @@ public class MainCircle {
 
     public int getRadius() {
         return radius;
+    }
+
+    public void moveTo(int x2, int y2) {
+        int dx = (x2 - x) * SPEED / GameManager.getScreenWidth();
+        int dy = (y2 - y) * SPEED / GameManager.getScreenHeight();
+        x += dx;
+        y += dy;
     }
 }
