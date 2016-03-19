@@ -1,5 +1,7 @@
-package com.spring_28min.service;
+package com.spring_28min.app;
 
+import com.spring_28min.app.HelloSampleRunner;
+import com.spring_28min.service.ApplicationContextConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,7 @@
-package com.spring_28min.service;
+package com.spring_28min.app;
 
+import com.spring_28min.service.ApplicationContextConfiguration;
+import com.spring_28min.service.HiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.*;
