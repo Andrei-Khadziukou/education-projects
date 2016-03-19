@@ -15,13 +15,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class HelloWorldSampleRunner {
 
-    @Autowired
     private HelloWorldGreeter helloWorldGreeter;
+
+    // spring prefer this over setter autowiring
+    @Autowired // the sample of constructor autowiring (injecting dependency via constructor)
+    public HelloWorldSampleRunner(HelloWorldGreeter helloWorldGreeter) {
+        this.helloWorldGreeter = helloWorldGreeter;
+    }
+
+    public HelloWorldSampleRunner() {
+    }
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConfiguration.class);
         HelloWorldSampleRunner runner = context.getBean(HelloWorldSampleRunner.class);
         runner.runSample();
+    }
+
+    @Autowired // the sample of setter autowiring (injecting dependency via setter method)
+    public void setHelloWorldGreeter(HelloWorldGreeter helloWorldGreeter) {
+        this.helloWorldGreeter = helloWorldGreeter;
     }
 
     public void runSample() {
