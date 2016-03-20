@@ -14,4 +14,9 @@ public class GoodMorningService implements HiService {
     public String sayHi() {
         return "Good Morning!";
     }
+
+    @Override
+    public String sayHiTo(String name) {
+        return "Good Morning, " + name + "!";
+    }
 }

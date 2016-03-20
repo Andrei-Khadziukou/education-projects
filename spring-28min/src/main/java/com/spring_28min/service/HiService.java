@@ -8,4 +8,6 @@ package com.spring_28min.service;
  */
 public interface HiService {
     String sayHi();
+
+    String sayHiTo(String name);
 }

@@ -20,12 +20,17 @@ import static org.junit.Assert.*;
 public class GoodMorningServiceTest {
 
     // the Spring tries to find suitable bean with the same class or which implements specified interface
+    // and used his name to define which should be used
     @Autowired
     private HiService goodMorningService;
 
     @Test
-    public void testSayHi() throws Exception {
-        assertNotNull(goodMorningService);
+    public void testSayHi() {
         assertEquals("Good Morning!", goodMorningService.sayHi());
+    }
+
+    @Test
+    public void testSayHiToAndrei() {
+        Assert.assertEquals("Good Morning, Andrei!", goodMorningService.sayHiTo("Andrei"));
     }
 }
