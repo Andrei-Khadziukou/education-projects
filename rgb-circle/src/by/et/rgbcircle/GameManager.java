@@ -72,7 +72,7 @@ public class GameManager {
                     calculateAndSetCircleColors();
                     break;
                 } else {
-                    endGame();
+                    endGame("YOU LOSE!");
                     return;
                 }
             }
@@ -81,11 +81,12 @@ public class GameManager {
             enemyCircles.remove(circleToRemove);
         }
         if (enemyCircles.isEmpty()) {
-            endGame();
+            endGame("YOU WIN!");
         }
     }
 
-    private void endGame() {
+    private void endGame(String message) {
+        canvasView.showMessage(message);
         mainCircle.resetRadius();
         initializeEnemyCircles();
         canvasView.redraw();
