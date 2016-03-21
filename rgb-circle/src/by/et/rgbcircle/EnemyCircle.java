@@ -12,6 +12,9 @@ import java.util.Random;
  */
 public class EnemyCircle extends SimpleCircle {
 
+    public static final int ENEMY_COLOR = Color.RED;
+    public static final int FOOD_COLOR = Color.rgb(0, 208, 0);
+
     public EnemyCircle(int x, int y, int radius) {
         super(x, y, radius);
     }
@@ -20,9 +23,20 @@ public class EnemyCircle extends SimpleCircle {
         Random random = new Random();
         int x = random.nextInt(GameManager.getScreenWidth());
         int y = random.nextInt(GameManager.getScreenHeight());
-        int radius = 10 + random.nextInt(Math.min(GameManager.getScreenWidth(), GameManager.getScreenHeight()) / 20);
+        int radius = 5 + random.nextInt(Math.min(GameManager.getScreenWidth(), GameManager.getScreenHeight()) / 20);
         EnemyCircle enemyCircle = new EnemyCircle(x, y, radius);
-        enemyCircle.setColor(Color.RED);
         return enemyCircle;
+    }
+
+    public void setColorDependsOnFoodOrEnemy(MainCircle mainCircle) {
+        if (isSmallThan(mainCircle)) {
+            setColor(FOOD_COLOR); // green
+        } else {
+            setColor(ENEMY_COLOR);
+        }
+    }
+
+    private boolean isSmallThan(MainCircle mainCircle) {
+        return this.radius <= mainCircle.radius;
     }
 }
