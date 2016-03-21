@@ -32,4 +32,9 @@ public class MainCircle extends SimpleCircle {
     public void resetRadius() {
         radius = INITIAL_RADIUS;
     }
+
+    public void grow(EnemyCircle enemyCircle) {
+        // newr = sqrt(r ^ 2 + enemyCircle.r ^ 2)
+        radius += enemyCircle.radius / 5;
+    }
 }

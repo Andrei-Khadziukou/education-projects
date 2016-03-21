@@ -44,7 +44,7 @@ public class EnemyCircle extends SimpleCircle {
         }
     }
 
-    private boolean isSmallThan(MainCircle mainCircle) {
+    public boolean isSmallThan(MainCircle mainCircle) {
         return this.radius <= mainCircle.radius;
     }
 
