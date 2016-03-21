@@ -58,6 +58,13 @@ public class GameManager {
 
     public void onTouchEvent(int x, int y) {
         mainCircle.moveTo(x, y);
+        moveEnemyCircles();
+    }
+
+    private void moveEnemyCircles() {
+        for (EnemyCircle circle: enemyCircles) {
+            circle.moveOnStep();
+        }
     }
 
     public static int getScreenWidth() {
