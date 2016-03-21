@@ -10,7 +10,7 @@ import android.graphics.Color;
  */
 public class MainCircle extends SimpleCircle {
 
-    public static final int INITIAL_RADIUS = 25;
+    public static final int INITIAL_RADIUS = 10;
     public static final int SPEED = 30;
 
     public MainCircle(int x, int y) {
@@ -35,6 +35,6 @@ public class MainCircle extends SimpleCircle {
 
     public void grow(EnemyCircle enemyCircle) {
         // newr = sqrt(r ^ 2 + enemyCircle.r ^ 2)
-        radius += enemyCircle.radius / 5;
+        radius += enemyCircle.radius / 2;
     }
 }
