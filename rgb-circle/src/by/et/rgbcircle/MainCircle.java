@@ -1,5 +1,7 @@
 package by.et.rgbcircle;
 
+import android.graphics.Color;
+
 /**
  * The player in our game.
  * Date: 03/18/2016
@@ -13,6 +15,7 @@ public class MainCircle extends SimpleCircle {
 
     public MainCircle(int x, int y) {
         super(x, y, INITIAL_RADIUS);
+        setColor(Color.BLUE);
     }
 
     public void moveTo(int x2, int y2) {

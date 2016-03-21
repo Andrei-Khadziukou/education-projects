@@ -1,8 +1,11 @@
 package by.et.rgbcircle;
 
+import android.graphics.Color;
+
 import java.util.Random;
 
 /**
+ * The circle to emulate food and enemy players.
  * Date: 03/18/2016
  *
  * @author Andrei_Khadziukou
@@ -18,6 +21,8 @@ public class EnemyCircle extends SimpleCircle {
         int x = random.nextInt(GameManager.getScreenWidth());
         int y = random.nextInt(GameManager.getScreenHeight());
         int radius = 10 + random.nextInt(Math.min(GameManager.getScreenWidth(), GameManager.getScreenHeight()) / 20);
-        return new EnemyCircle(x, y, radius);
+        EnemyCircle enemyCircle = new EnemyCircle(x, y, radius);
+        enemyCircle.setColor(Color.RED);
+        return enemyCircle;
     }
 }
