@@ -28,4 +28,8 @@ public class MainCircle extends SimpleCircle {
     public SimpleCircle getSafeCircleArea() {
         return new SimpleCircle(x, y, radius * 3);
     }
+
+    public void resetRadius() {
+        radius = INITIAL_RADIUS;
+    }
 }

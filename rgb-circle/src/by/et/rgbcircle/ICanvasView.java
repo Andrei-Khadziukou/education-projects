@@ -9,4 +9,6 @@ package by.et.rgbcircle;
 public interface ICanvasView {
 
     void drawCircle(SimpleCircle mainCircle);
+
+    void redraw();
 }
