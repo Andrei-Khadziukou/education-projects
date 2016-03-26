@@ -7,9 +7,12 @@ repositories {
 
 dependencies {
     compile 'org.springframework:spring-context:4.2.5.RELEASE'
-    // next 2 dependencies are neede to add support of AOP to the project
+    // next 2 dependencies are needed to add support of AOP to the project
     compile 'org.springframework:spring-aop:4.2.5.RELEASE'
     compile 'org.springframework:spring-aspects:4.2.5.RELEASE'
+    // next 2 dependencies are needed to support Spring JDBC sample
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
+    compile 'com.h2database:h2:1.4.191'
 
     testCompile 'org.springframework:spring-test:4.2.5.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.11'
