@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Define mapping between XML and objects -->
+<mapping>
+    <class name="com.spring_28min.domain.Todo">
+        <map-to xml="todo"/>
+
+        <field name="id" type="integer">
+            <bind-map name="id" node="attribute"/>
+        </field>
+
+        <field name="done" type="boolean">
+            <bind-map name="done" node="attribute"/>
+        </field>
+
+        <field name="description" type="string">
+            <bind-map name="description" node="element"/>
+        </field>
+    </class>
+</mapping>
