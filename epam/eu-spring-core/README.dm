@@ -1,0 +1,1 @@
+The sample of the application according to the 'Spring Core' education from epam university.
