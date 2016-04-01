@@ -19,4 +19,13 @@
         <constructor-arg ref="logger"/>
     </bean>
 
+    <bean id="event" name="generatedEvent" class="com.eu.spring.core.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+        </constructor-arg>
+    </bean>
+
 </beans>
