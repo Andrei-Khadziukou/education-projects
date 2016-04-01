@@ -10,11 +10,13 @@
         <constructor-arg index="1" value="Eduard"/>
     </bean>
 
-    <bean id="eventLogger" class="com.eu.spring.core.ConsoleEventLogger" />
+    <alias name="client" alias="mainClient"/>
+
+    <bean name="eventLogger, logger" class="com.eu.spring.core.ConsoleEventLogger" />
 
     <bean id="app" class="com.eu.spring.core.App">
-        <constructor-arg index="0" ref="client"/>
-        <constructor-arg index="1" ref="eventLogger"/>
+        <constructor-arg ref="mainClient"/>
+        <constructor-arg ref="logger"/>
     </bean>
 
 </beans>
