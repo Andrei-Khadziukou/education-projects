@@ -17,7 +17,13 @@
 
     <bean id="app" class="com.eu.spring.core.App" depends-on="client, logger">
         <constructor-arg ref="mainClient"/>
-        <constructor-arg ref="logger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
+        <property name="cacheEventLogger" ref="cacheEventLogger"/>
     </bean>
 
     <bean id="event" name="generatedEvent" class="com.eu.spring.core.Event" scope="prototype">

@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Map;
+
 /**
  * The application to run samples of using Spring.
  *
@@ -14,18 +16,24 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App implements ApplicationContextAware {
 
     private Client client;
-    private ConsoleEventLogger consoleEventLogger;
+    private EventLogger cacheEventLogger;
     private ApplicationContext applicationContext;
+    private Map<EventType, EventLogger> typeToLoggerMap;
 
-    public App(Client client, ConsoleEventLogger consoleEventLogger) {
+    public App(Client client, Map<EventType, EventLogger> typeToLoggerMap) {
         this.client = client;
-        this.consoleEventLogger = consoleEventLogger;
+        this.typeToLoggerMap = typeToLoggerMap;
     }
 
-    public void logEvent(String message) {
+    public void logEvent(String message, EventType type) {
         Event event = applicationContext.getBean(Event.class);
         event.setMessage(message.replaceAll(client.getId(), client.getName()));
-        consoleEventLogger.logEvent(event);
+        EventLogger logger = typeToLoggerMap.get(type);
+        if (type == null) {
+            cacheEventLogger.logEvent(event);
+        } else {
+            logger.logEvent(event);
+        }
     }
 
     public static void main(String[] args) {
@@ -34,11 +42,17 @@ public class App implements ApplicationContextAware {
             = new ClassPathXmlApplicationContext("com/eu/spring/core/spring-conf.xml");
 
         App app = applicationContext.getBean(App.class);
-        app.logEvent("Test message from user 1");
+        app.logEvent("Test message from user 1", null);
+        app.logEvent("Test message 2 from user 1", EventType.INFO);
+        app.logEvent("Test message 3 from user 1", EventType.ERROR);
         applicationContext.close();
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+    }
+
+    public void setCacheEventLogger(EventLogger cacheEventLogger) {
+        this.cacheEventLogger = cacheEventLogger;
     }
 }

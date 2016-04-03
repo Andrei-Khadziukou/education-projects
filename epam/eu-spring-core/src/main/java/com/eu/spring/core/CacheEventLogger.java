@@ -36,6 +36,8 @@ public class CacheEventLogger extends FileEventLogger {
     }
 
     private void writeEventsFromCache() {
-
+        for (Event event : events) {
+            super.logEvent(event);
+        }
     }
 }
