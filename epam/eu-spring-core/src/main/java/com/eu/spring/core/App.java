@@ -3,6 +3,7 @@ package com.eu.spring.core;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -29,11 +30,12 @@ public class App implements ApplicationContextAware {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext
+        ConfigurableApplicationContext applicationContext
             = new ClassPathXmlApplicationContext("com/eu/spring/core/spring-conf.xml");
 
         App app = applicationContext.getBean(App.class);
         app.logEvent("Test message from user 1");
+        applicationContext.close();
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

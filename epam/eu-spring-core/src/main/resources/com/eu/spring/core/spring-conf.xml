@@ -28,4 +28,13 @@
         </constructor-arg>
     </bean>
 
+    <bean id="fileEventLogger" class="com.eu.spring.core.FileEventLogger" init-method="init">
+        <constructor-arg value="./eu-spring-core-log.txt"/>
+    </bean>
+
+    <bean id="cacheEventLogger" class="com.eu.spring.core.CacheEventLogger" destroy-method="destroy">
+        <constructor-arg index="0" value="4"/>
+        <constructor-arg index="1" value="./eu-spring-core-log.txt"/>
+    </bean>
+
 </beans>
