@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -72,5 +73,10 @@ public class Event {
                 .append("date", dateFormat.format(date))
                 .append("message", message)
                 .toString();
+    }
+
+    public static boolean isDay() {
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        return hour > 7 && hour < 18;
     }
 }

@@ -16,7 +16,7 @@ import java.util.Map;
 public class App implements ApplicationContextAware {
 
     private Client client;
-    private EventLogger cacheEventLogger;
+    private EventLogger defaultEventLogger;
     private ApplicationContext applicationContext;
     private Map<EventType, EventLogger> typeToLoggerMap;
 
@@ -30,7 +30,7 @@ public class App implements ApplicationContextAware {
         event.setMessage(message.replaceAll(client.getId(), client.getName()));
         EventLogger logger = typeToLoggerMap.get(type);
         if (type == null) {
-            cacheEventLogger.logEvent(event);
+            defaultEventLogger.logEvent(event);
         } else {
             logger.logEvent(event);
         }
@@ -52,7 +52,7 @@ public class App implements ApplicationContextAware {
         this.applicationContext = applicationContext;
     }
 
-    public void setCacheEventLogger(EventLogger cacheEventLogger) {
-        this.cacheEventLogger = cacheEventLogger;
+    public void setDefaultEventLogger(EventLogger defaultEventLogger) {
+        this.defaultEventLogger = defaultEventLogger;
     }
 }
