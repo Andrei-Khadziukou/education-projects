@@ -1,1 +1,1 @@
-The practical task from the EU Spring Core course.
+The practical task from the EU Spring Core course (the movie management system).
