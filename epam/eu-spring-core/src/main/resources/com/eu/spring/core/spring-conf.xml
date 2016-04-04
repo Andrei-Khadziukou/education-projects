@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" 
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
- 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
-        default-lazy-init="false">
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util.xsd"
+       default-lazy-init="false">
 
     <import resource="loggers-conf.xml"/>
 
     <bean id="client" class="com.eu.spring.core.Client">
-        <constructor-arg index="0" value="1"/>
-        <constructor-arg index="1" value="Eduard"/>
+        <constructor-arg index="0" value="${id}"/>
+        <constructor-arg index="1" value="${name}"/>
     </bean>
 
     <alias name="client" alias="mainClient"/>
 
-    <bean id="app" class="com.eu.spring.core.App" depends-on="client, logger">
+    <util:map id="loggerMap">
+        <entry key="INFO" value-ref="consoleEventLogger"/>
+        <entry key="ERROR" value-ref="combinedEventLogger"/>
+    </util:map>
+
+    <bean id="app" class="com.eu.spring.core.App" depends-on="client, logger"
+          c:typeToLoggerMap-ref="loggerMap"
+          p:cacheEventLogger-ref="cacheEventLogger">
         <constructor-arg ref="mainClient"/>
-        <constructor-arg>
-            <map>
-                <entry key="INFO" value-ref="consoleEventLogger"/>
-                <entry key="ERROR" value-ref="combinedEventLogger"/>
-            </map>
-        </constructor-arg>
-        <property name="cacheEventLogger" ref="cacheEventLogger"/>
     </bean>
 
     <bean id="event" name="generatedEvent" class="com.eu.spring.core.Event" scope="prototype">
@@ -35,4 +40,18 @@
         </constructor-arg>
     </bean>
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:com/eu/spring/core/client.properties</value>
+            </list>
+        </property>
+
+        <property name="ignoreResourceNotFound" value="true"/>
+
+        <property name="systemPropertiesMode">
+            <util:constant static-field=
+                "org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        </property>
+    </bean>
 </beans>
