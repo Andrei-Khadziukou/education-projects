@@ -16,6 +16,7 @@ public class User {
     private String id;
     private String fullName;
     private String nickname;
+    private String email;
     private String password;
     private List<UserRole> roles;
 
@@ -61,6 +62,14 @@ public class User {
         this.roles = roles;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,6 +82,7 @@ public class User {
                 .append(id, user.id)
                 .append(fullName, user.fullName)
                 .append(nickname, user.nickname)
+                .append(email, user.email)
                 .append(password, user.password)
                 .append(roles, user.roles)
                 .isEquals();
@@ -84,6 +94,7 @@ public class User {
                 .append(id)
                 .append(fullName)
                 .append(nickname)
+                .append(email)
                 .append(password)
                 .append(roles)
                 .toHashCode();
@@ -95,6 +106,7 @@ public class User {
                 .append("id", id)
                 .append("fullName", fullName)
                 .append("nickname", nickname)
+                .append("email", email)
                 .append("password", password)
                 .append("roles", roles)
                 .toString();
