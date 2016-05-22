@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * The interface to define contract for actions which can be performed on {@link User}.
+ *
+ * @author Andrei Khadziukou
  */
 public interface UserService {
 
